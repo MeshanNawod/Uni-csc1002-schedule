@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC1002 Schedule</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe4e1, #fff);
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin: 20px 0;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff0099, #cc66ff);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        thead {
+            background: linear-gradient(135deg, #ff0099, #ff66cc);
+            color: white;
+        }
+        thead th {
+            padding: 15px;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        tbody tr {
+            background-color: #fffaf0;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        tbody tr:hover {
+            background-color: #ffe4e1;
+            transform: translateY(-2px);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        tbody td {
+            padding: 15px;
+            border-bottom: 2px solid #ffe4e1;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #fff5ee;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #fffaf0;
+        }
+        .done {
+            color: green;
+            font-weight: bold;
+        }
+        .upcoming {
+            color: orange;
+            font-weight: bold;
+        }
+        .highlight {
+            background-color: #ffccff; /* Highlight color */
+        }
+        .calendar-container {
+            width: 90%;
+            margin: 30px auto;
+            background-color: #fffaf0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .calendar-header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        .calendar div {
+            padding: 15px;
+            background-color: #ffe4e1;
+            border-radius: 5px;
+        }
+        .calendar .day {
+            font-weight: bold;
+            background-color: #ff0099;
+            color: white;
+        }
+        .calendar .date {
+            cursor: pointer;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        .calendar .date:hover {
+            background-color: #ff66cc;
+        }
+        .calendar .date.lecture {
+            background-color: green;
+            color: white;
+        }
+        .calendar .date.event {
+            background-color: #ff0099;
+            color: white;
+        }
+        /* Rose color for the specific dates */
+        .calendar .date.rose {
+            background-color: #ff66b2; /* Rose color */
+            color: white;
+        }
+        .calendar .date.green {
+            background-color: #32CD32; /* Green color */
+            color: white;
+        }
+        @media (max-width: 768px) {
+            table, tbody, tr, td, th {
+                display: block;
+                width: 100%;
+            }
+            tbody td {
+                text-align: left;
+                padding: 10px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .calendar {
+                grid-template-columns: repeat(7, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSC1002 Schedule</h1>
+    <table id="schedule-table">
+        <thead>
+            <tr>
+                <th>Session</th>
+                <th>Topic</th>
+                <th>Date & Time</th>
+                <th>Facilitator(s)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Introduction to CSC1002 Theory/Practical</td>
+                <td>Dec 3 - (11 am - 2 pm)</td>
+                <td>Dr. Ruwanthini Siyambalapitiya / Mr. Isuru Madugalla</td>
+                <td class="done">Done</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Computer Organization</td>
+                <td>Dec 5 - (1 pm - 3 pm)</td>
+                <td>Dr. Hakim Usoof</td>
+                <td class="done">Done</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Digital Environments</td>
+                <td>Dec 6 - (9 am - 11 am)</td>
+                <td>Dr. Ruwan Nawarathna</td>
+                <td class="done">Done</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Choosing/Purchasing the Right Device</td>
+                <td>Dec 9 - (1 pm - 3 pm)</td>
+                <td>Dr. Hakim Usoof</td>
+                <td class="done">Done</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>University Life in the Digital Age</td>
+                <td>Dec 11 - (9 am - 11 am)</td>
+                <td>Dr. Ruwan Nawarathna</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td>Practical Session</td>
+                <td>Dec 12 - (9 am - 11 am)</td>
+                <td>Mr. Isuru Madugalla</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td>ICT Ethics</td>
+                <td>Dec 13 - (2 pm - 4 pm)</td>
+                <td>Dr. Ruwanthini Siyambalapitiya</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08</td>
+                <td>Introduction to Programming Languages</td>
+                <td>Dec 16 - (10 am - 12 noon)</td>
+                <td>Dr. Ruwanthini Siyambalapitiya</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>09</td>
+                <td>Academic Presentations 01</td>
+                <td>Dec 17 - (9 am - 11 am)</td>
+                <td>Prof. Amalka Pinidiyaarachchi</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Academic Presentations 02</td>
+                <td>Dec 19 - (9 am - 11 am)</td>
+                <td>Prof. Amalka Pinidiyaarachchi</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Custom Calendar Section -->
+    <div class="calendar-container">
+        <div class="calendar-header">December 2024</div>
+        <div class="calendar">
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+            <div class="date green" data-date="3">1</div>
+            <div class="date green" data-date="5">2</div>
+            <div class="date green" data-date="6">3</div>
+            <div class="date" data-date="4">4</div>
+            <div class="date green" data-date="5">5</div>
+            <div class="date green" data-date="6">6</div>
+            <div class="date" data-date="7">7</div>
+            <div class="date" data-date="8">8</div>
+            <div class="date" data-date="9">9</div>
+            <div class="date" data-date="10">10</div>
+            <div class="date rose" data-date="11">11</div>
+            <div class="date rose" data-date="12">12</div>
+            <div class="date rose" data-date="13">13</div>
+            <div class="date" data-date="14">14</div>
+            <div class="date" data-date="15">15</div>
+            <div class="date rose" data-date="16">16</div>
+            <div class="date rose" data-date="17">17</div>
+            <div class="date" data-date="18">18</div>
+            <div class="date rose" data-date="19">19</div>
+            <div class="date" data-date="20">20</div>
+            <div class="date" data-date="21">21</div>
+            <div class="date" data-date="22">22</div>
+            <div class="date" data-date="23">23</div>
+            <div class="date" data-date="24">24</div>
+            <div class="date" data-date="25">25</div>
+            <div class="date" data-date="26">26</div>
+            <div class="date" data-date="27">27</div>
+            <div class="date" data-date="28">28</div>
+            <div class="date" data-date="29">29</div>
+            <div class="date" data-date="30">30</div>
+            <div class="date" data-date="31">31</div>
+        </div>
+    </div>
+
+    <script>
+        // Adding click event listener to each date with rose color
+        document.querySelectorAll('.calendar .rose').forEach(dateElement => {
+            dateElement.addEventListener('click', function() {
+                const clickedDate = this.getAttribute('data-date');
+                const tableRows = document.querySelectorAll('#schedule-table tbody tr');
+                tableRows.forEach(row => {
+                    const dateCell = row.cells[2]; // The Date & Time cell
+                    const rowDate = dateCell.textContent.split(' ')[1]; // Get day from "Dec xx"
+                    if (rowDate === clickedDate) {
+                        row.classList.toggle('highlight');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -129,14 +129,17 @@
 
         /* Mobile View */
         @media (max-width: 768px) {
-            table, tbody, tr, td, th {
+            table {
                 display: block;
-                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            thead th, tbody td {
                 font-size: 14px;
+                padding: 10px;
             }
             tbody td {
                 text-align: left;
-                padding: 10px;
                 border: none;
                 border-bottom: 1px solid #ddd;
             }

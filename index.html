@@ -126,10 +126,13 @@
             background-color: #32CD32; /* Green color */
             color: white;
         }
+
+        /* Mobile View */
         @media (max-width: 768px) {
             table, tbody, tr, td, th {
                 display: block;
                 width: 100%;
+                font-size: 14px;
             }
             tbody td {
                 text-align: left;
@@ -139,6 +142,28 @@
             }
             .calendar {
                 grid-template-columns: repeat(7, 1fr);
+                grid-gap: 5px;
+            }
+            .calendar .date {
+                padding: 8px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 24px;
+                padding: 15px;
+            }
+            .calendar-container {
+                padding: 10px;
+            }
+        }
+
+        /* Tablet View */
+        @media (max-width: 1024px) {
+            table {
+                width: 95%;
+            }
+            .calendar .date {
+                padding: 12px;
             }
         }
     </style>
@@ -275,14 +300,13 @@
     </div>
 
     <script>
-        // Adding click event listener to each date with rose color
         document.querySelectorAll('.calendar .rose').forEach(dateElement => {
             dateElement.addEventListener('click', function() {
                 const clickedDate = this.getAttribute('data-date');
                 const tableRows = document.querySelectorAll('#schedule-table tbody tr');
                 tableRows.forEach(row => {
-                    const dateCell = row.cells[2]; // The Date & Time cell
-                    const rowDate = dateCell.textContent.split(' ')[1]; // Get day from "Dec xx"
+                    const dateCell = row.cells[2];
+                    const rowDate = dateCell.textContent.split(' ')[1];
                     if (rowDate === clickedDate) {
                         row.classList.toggle('highlight');
                     }
